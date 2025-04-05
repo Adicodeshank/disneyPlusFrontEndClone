@@ -1,0 +1,19 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router";
+import Login from "./components/Login";
+import Header from "./components/Header";
+function App() {
+  return (
+    <>
+      <div className="App">
+        <Router>
+          <Header/>
+          <Routes>
+            <Route exact path="/" element={<Login />} />
+          </Routes>
+        </Router>
+      </div>
+    </>
+  );
+}
+
+export default App;
