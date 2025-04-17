@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-// import { getFirestore } from "firebase/firestore";
+import { getFirestore } from "firebase/firestore";
+// Required for side-effects
 const firebaseConfig = {
   apiKey: "AIzaSyAb13yjpuwDAsCFzNdeq5SEY02pLg5nr7E",
   authDomain: "disneyplus-clone-aeea8.firebaseapp.com",
@@ -11,5 +12,6 @@ const firebaseConfig = {
 };
 // const db = getFirestore(app);
 const app = initializeApp(firebaseConfig);
-export { app };
+const db = getFirestore(app);
+export { app,db};
 

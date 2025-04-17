@@ -1,18 +1,16 @@
 import styled from "styled-components";
 import React, { useEffect } from "react";
 import { app } from "../firebaseConfig";
+import { onAuthStateChanged } from "firebase/auth";
 import {
   getAuth,
   signInWithPopup,
   GoogleAuthProvider,
   signOut,
 } from "firebase/auth";
-// import { getFirestore } from "firebase/firestore";
-// import { collection, addDoc } from "firebase/firestore";
-
 // We can read data from the store with useSelector, and dispatch actions using useDispatch
 import { useSelector, useDispatch } from "react-redux";
-// usenavigate is a React Hook from React Router v5 that gives you access to the browser's navigate object, which lets you navigate between routes/pages programmatically.=> usenavigate is useNavigate
+// usenavigate is a React Hook from React Router v5 that gives you access to the browser's navigate object, which lets you navigate between routes/pages programmatically.=> uselocation  is useNavigate
 import { useNavigate } from "react-router";
 import {
   selectUserName,
@@ -27,7 +25,6 @@ function Header() {
   const userPhoto = useSelector(selectUserPhoto);
   const auth = getAuth();
   const provider = new GoogleAuthProvider();
-  // const db = getFirestore(app);
 
   const handleAuth = () => {
     if (!userName) {
@@ -71,6 +68,7 @@ function Header() {
     auth.onAuthStateChanged(async (user) => {
       if (user) {
         setUser(user);
+        console.log("coming to home ");
         navigate("/home"); // 🧭 navigates to /home => router taking you to /home page
         //  What .push('/home') Does:
         // It adds /home to your browser’s navigate stack Just like clicking a <Link to="/home" /> It triggers React Router to re-render and show the /home route

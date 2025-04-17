@@ -21,9 +21,9 @@ const userSlice = createSlice({
     },
 
     setSignOutState: (state) => {
-      state.name = "";
-      state.email = "";
-      state.photo = "";
+      state.name = null;
+      state.email = null;
+      state.photo = null;
     },
   },
 });
