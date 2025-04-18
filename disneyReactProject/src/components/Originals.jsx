@@ -1,39 +1,32 @@
-import React from 'react'
-import styled from 'styled-components';
-import { Link } from 'react-router';
-function Orignals() {
+import styled from "styled-components";
+import { Link } from "react-router";
+import { useSelector } from "react-redux";
+import { selectOriginal } from "../features/movie/movieSlice";
+
+const Originals = (props) => {
+  const movies = useSelector(selectOriginal);
+  console.log(movies);
   return (
-    <div>
-      <Container>
-        <h4>Orignals</h4>
-        <Content>
-            <Wrap>
-                <Link to= "/">
-                    <img src="/" alt="" />
-                </Link>
+    <Container>
+      <h4>Originals</h4>
+      <Content>
+        {movies &&
+          movies.map((movie, key) => (
+            <Wrap key={key}>
+              {movie.id}
+              <Link to={`/detail/${movie.id}`}>
+                <img src={movie.cardImg} alt={movie.title} />
+              </Link>
             </Wrap>
-            <Wrap>
-                <Link to= "/">
-                    <img src="/" alt="" />
-                </Link>
-            </Wrap>
-            <Wrap>
-                <Link to= "/">
-                    <img src="/" alt="" />
-                </Link>
-            </Wrap>
-            <Wrap>
-                <Link to= "/">
-                    <img src="/" alt="" />
-                </Link>
-            </Wrap>
-        </Content>
-      </Container>
-    </div>
-  )
-}
+          ))}
+      </Content>
+    </Container>
+  );
+};
+
 const Container = styled.div`
   padding: 0 0 26px;
+  color : rgba(251, 250, 250, 0.734);
 `;
 
 const Content = styled.div`
@@ -46,6 +39,7 @@ const Content = styled.div`
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 `;
+
 const Wrap = styled.div`
   padding-top: 56.25%;
   border-radius: 10px;
@@ -56,7 +50,6 @@ const Wrap = styled.div`
   position: relative;
   transition: all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
   border: 3px solid rgba(249, 249, 249, 0.1);
-
   img {
     inset: 0px;
     display: block;
@@ -69,7 +62,6 @@ const Wrap = styled.div`
     z-index: 1;
     top: 0;
   }
-
   &:hover {
     box-shadow: rgb(0 0 0 / 80%) 0px 40px 58px -16px,
       rgb(0 0 0 / 72%) 0px 30px 22px -10px;
@@ -78,4 +70,4 @@ const Wrap = styled.div`
   }
 `;
 
-export default Orignals
+export default Originals;

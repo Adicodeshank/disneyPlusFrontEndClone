@@ -32,8 +32,6 @@ function Header() {
         .then((result) => {
           setUser(result.user);
           console.log(result.user);
-          console.log("Redux userPhoto:", userPhoto);
-          console.log("Redux userName:", userName);
         })
         .catch((error) => {
           alert(error.message);
@@ -64,6 +62,9 @@ function Header() {
     );
   };
 
+  console.log("Redux userPhoto:", userPhoto);
+  console.log("Redux userName:", userName);
+  
   useEffect(() => {
     auth.onAuthStateChanged(async (user) => {
       if (user) {

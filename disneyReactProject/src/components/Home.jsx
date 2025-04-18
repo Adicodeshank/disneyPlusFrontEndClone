@@ -4,7 +4,7 @@ import ImageSlider from "./ImageSlider";
 import Viewers from "./Viewers";
 import Reccomendation from "./Reccomendation";
 import NewDisney from "./NewDisney";
-import Orignals from "./Orignals";
+import Originals from "./Originals";
 import Trending from "./Trending";
 import { useDispatch, useSelector } from "react-redux";
 import { collection, getDocs } from "firebase/firestore";
@@ -15,37 +15,39 @@ import { db } from "../firebaseConfig";
 const Home = () => {
   const dispatch = useDispatch();
   const userName = useSelector(selectUserName);
-  console.log(userName);
-
   useEffect(() => {
-    const fetchMovies = async () => {
+    const fetchData = async () => {
+      const querySnapshot = await getDocs(collection(db, "movies"));
       let recommends = [];
       let newDisneys = [];
       let originals = [];
       let trending = [];
 
-      const querySnapshot = await getDocs(collection(db, "movies"));
       querySnapshot.forEach((doc) => {
         console.log(doc.data());
         switch (doc.data().type) {
           case "recommend":
-            recommends.push({ id: doc.id, ...doc.data() });
+            console.log(recommends);
+            recommends = [...recommends, { id: doc.id, ...doc.data() }];
             break;
           case "new":
-            newDisneys.push({ id: doc.id, ...doc.data() });
+            console.log(newDisneys);
+            newDisneys = [...newDisneys, { id: doc.id, ...doc.data() }];
             break;
           case "original":
-            originals.push({ id: doc.id, ...doc.data() });
+            console.log(originals);
+            originals = [...originals, { id: doc.id, ...doc.data() }];
             break;
           case "trending":
-            trending.push({ id: doc.id, ...doc.data() });
+            console.log(trending);
+            trending = [...trending, { id: doc.id, ...doc.data() }];
             break;
         }
       });
 
       dispatch(
         setMovies({
-          recommended: recommends,
+          recommend: recommends,
           newDisney: newDisneys,
           original: originals,
           trending: trending,
@@ -53,7 +55,7 @@ const Home = () => {
       );
     };
 
-    fetchMovies();
+    fetchData();
   }, []);
 
   return (
@@ -62,7 +64,7 @@ const Home = () => {
       <Viewers />
       <Reccomendation />
       <NewDisney />
-      <Orignals />
+      <Originals />
       <Trending />
     </Container>
   );

@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import { useSelector } from "react-redux";
 import { selectRecommend } from "../features/movie/movieSlice";
 
-const Recommends = (props) => {
+const Reccomendation = (props) => {
   const movies = useSelector(selectRecommend);
   console.log(movies, ":🛢️");
 
@@ -15,7 +15,7 @@ const Recommends = (props) => {
           movies.map((movie, key) => (
             <Wrap key={key}>
               {movie.id}
-              <Link to={`/detail/` + movie.id}>
+              <Link to={`/detail/${movie.id}`}>
                 <img src={movie.cardImg} alt={movie.title} />
               </Link>
             </Wrap>
@@ -27,6 +27,7 @@ const Recommends = (props) => {
 
 const Container = styled.div`
   padding: 0 0 26px;
+  color: rgba(251, 250, 250, 0.734);
 `;
 
 const Content = styled.div`
@@ -72,12 +73,10 @@ const Wrap = styled.div`
   }
 `;
 
-export default Recommends;
+export default Reccomendation;
 
-
-
-// 
-// 
+//
+//
 // import React from "react";
 // import styled from "styled-components";
 // import { Link } from "react-router";
