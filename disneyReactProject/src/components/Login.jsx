@@ -1,8 +1,9 @@
-import React from 'react'
-import styled from "styled-components";function Login() {
+import React from "react";
+import styled from "styled-components";
+function Login() {
   return (
     <Container>
-        <Content>
+      <Content>
         <CTA>
           <CTALogoOne src="/public/images/cta-logo-one.svg" alt="logo1" />
           <SignUp>GET ALL THERE</SignUp>
@@ -13,23 +14,24 @@ import styled from "styled-components";function Login() {
           </Description>
           <CTALogoTwo src="/images/cta-logo-two.png" alt="" />
         </CTA>
-        <BgImage/>
-        </Content>
+        <BgImage />
+      </Content>
     </Container>
-  )
+  );
 }
 
 const Container = styled.section`
-  overflow: hidden;
   display: flex;
   flex-direction: column;
   text-align: center;
   height: 100vh;
+  /* width:100vw; */
+  /* background-color: black; */
+  overflow: hidden;
 `;
 
 const Content = styled.div`
   margin-bottom: 10vw;
-  width: 100%;
   position: relative;
   min-height: 100vh;
   box-sizing: border-box;
@@ -39,6 +41,7 @@ const Content = styled.div`
   flex-direction: column;
   padding: 80px 40px;
   height: 100%;
+  width: 100%;
 `;
 
 const BgImage = styled.div`
@@ -99,4 +102,4 @@ const CTALogoTwo = styled.img`
   width: 100%;
 `;
 
-export default Login
+export default Login;

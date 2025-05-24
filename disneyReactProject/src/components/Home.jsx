@@ -87,6 +87,7 @@ const Container = styled.main`
     opacity: 1;
     z-index: -1;
   }
+  width:90vw;
 `;
 
 export default Home;
