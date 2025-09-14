@@ -1,4 +1,8 @@
 
-My React app 
+My React app : 
 disney plus frontend clone with firebase 
-firebase hosting , authentication, datastore
+ hosting , authentication, datastore
+
+
+Hosted link(issues in hosting) : https://disneyplus-clone-aeea8.web.app/ 
+
